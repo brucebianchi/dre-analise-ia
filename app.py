@@ -124,11 +124,12 @@ DRE:
             linha = f"{indicador}: R$ {valor:,.2f}"
             pdf.cell(0, 10, linha, ln=True)
 
-    import tempfile
+import tempfile
 
-    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
+with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_file:
     pdf.output(tmp_file.name)
     tmp_file.seek(0)
     with open(tmp_file.name, "rb") as file:
-    st.download_button("📄 Baixar PDF", data=file.read(), file_name="resumo_dre.pdf", mime="application/pdf")
+        st.download_button("📄 Baixar PDF", data=file.read(), file_name="resumo_dre.pdf", mime="application/pdf")
+
 
